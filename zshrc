@@ -22,27 +22,16 @@ bindkey "^R" history-incremental-search-backward
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 
-# add some emacs key shortcuts
-bindkey "^K" kill-line
-bindkey "^Z" undo
-
 # handy keybindings
 bindkey "^P" history-search-backward
 bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
-# bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 
 # expand functions in the prompt
 setopt prompt_subst
 
 # ignore duplicate history entries
 setopt histignoredups
-
-# keep TONS of history
-export HISTSIZE=4096
-
-# look for ey config in project dirs
-export EYRC=./.eyrc
 
 # automatically pushd
 setopt auto_pushd
@@ -72,34 +61,14 @@ if [ -e "$HOME/.functions/functions" ]; then
   source "$HOME/.functions/functions"
 fi
 
-# RVM
-setopt nullglob
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-# prompt
-if [ -e "$HOME/.prompt" ]; then
-  source "$HOME/.prompt"
-fi
-
-# export EDITOR="~/bin/subl -n"
-
 # PATH stuff
-export PATH="$HOME/bin:/usr/local/bin:/usr/local/share/python:$PATH"
+export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export PATH="$HOME/.cask/bin:$PATH"
-PATH="/usr/local/heroku/bin:/usr/texbin:$PATH"
-PATH="/Applications/Android Studio.app/sdk:$PATH" #Android SDK
 
-export ANDROID_HOME="/Applications/Android Studio.app/sdk"
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export PATH="/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/ruby-build/bin/opt/boxen/heroku/bin:$PATH"
 
-export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2376
-export DOCKER_CERT_PATH=/Users/tarjan/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
+# Composer
+export PATH="$PATH:$HOME/.composer/vendor/bin"
 
-
-
-# added by travis gem
-[ -f /Users/tarjan/.travis/travis.sh ] && source /Users/tarjan/.travis/travis.sh
 
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
