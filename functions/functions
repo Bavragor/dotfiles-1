@@ -1,9 +1,3 @@
-if [ -e "$HOME/.functions/z.sh" ]; then
-  . "$HOME/.functions/z.sh"
-  function precmd () {
-    _z --add "$(pwd -P)"
-  }
-fi
 
 function rs {
   if [ -e bin/rails ]; then
@@ -42,21 +36,6 @@ function rake {
     bundle exec rake $@
   else
     command rake $@
-  fi
-}
-
-# Create a web server from the current directory
-# usage: server <port>
-#        # => server 8080
-function server() {
-  open "http://localhost:${1}" && python -m SimpleHTTPServer $1
-}
-
-
-function oldpr() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null)
-  if [[ -n $ref ]]; then
-    echo `git pull-request -h $1:${ref#refs/heads/}`
   fi
 }
 
